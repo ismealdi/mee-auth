@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_sign_in">Sign In</string>
+    <string name="text_hanya_pilih">Hanya pilih dan tunggu!</string>
+    <string name="text_kebutuhan_pencintan_mie">Kebutuhan pencinta mie</string>
+    <string name="text_masuk_untuk_melanjutkan">Masuk untuk melanjutkan</string>
+    <string name="text_phone_hint">Masukkan nomor ponsel Anda</string>
+    <string name="text_masuk">Masuk</string>
+    <string name="text_daftar">Daftar</string>
+    <string name="text_belum_punya_akun">Belum punya akun?</string>
+    <string name="title_sign_up">Daftar</string>
+    <string name="text_isi_detail">Isi Detail</string>
+    <string name="text_gabung">Gabung</string>
+    <string name="text_kata_sandi">Kata Sandi</string>
+    <string name="text_email_address">Email Address</string>
+    <string name="text_nama_lengkap">Nama Lengkap</string>
+    <string name="text_dengan_membuat_akun_saya_menerima_syarat_dan_ketentuan">Dengan membuat akun saya menerima syarat dan ketentuan</string>
+    <string name="text_wait_for_otp">OTP Terkirim, Harap tunggu kami memvalidasi identitas Anda</string>
+    <string name="text_enter_6_digits">Enter 6 Digits Number</string>
+    <string name="text_tidak_menerima_otp">Tidak menerima OTP?</string>
+    <string name="text_kirim_ulang">Kirim Ulang</string>
+    <string name="text_kirim_ulang_count">Kirim Ulang (%s)</string>
+    <string name="title_otp">Verifikasi</string>
+</resources>

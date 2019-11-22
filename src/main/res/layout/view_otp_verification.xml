@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutParent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackgroundPrimary">
+
+        <include
+            android:id="@+id/componentToolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            layout="@layout/component_toolbar" />
+
+        <ScrollView
+            app:layout_constraintTop_toBottomOf="@id/componentToolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/AppTheme.Layout.Parent">
+
+                <com.ismealdi.meepopup.util.component.AmTextView
+                    app:am_font_style="regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/colorTextPrimary"
+                    android:text="@string/text_wait_for_otp"/>
+
+                <com.ismealdi.meepopup.util.component.AmEditText
+                    android:background="@drawable/input_primary"
+                    android:layout_marginTop="@dimen/component_big"
+                    android:layout_marginBottom="@dimen/component_super"
+                    android:id="@+id/inputPhone"
+                    style="@style/AppTheme.EditText.Primary"
+                    android:lines="1"
+                    android:hint="@string/text_enter_6_digits"
+                    android:digits="1234567890"
+                    android:inputType="numberSigned"
+                    android:maxLength="6"
+                    android:imeOptions="actionDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:id="@+id/layoutResendOtp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:orientation="horizontal">
+
+                    <com.ismealdi.meepopup.util.component.AmTextView
+                        app:am_font_style="regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@color/colorTextPrimary"
+                        android:text="@string/text_tidak_menerima_otp"/>
+
+                    <com.ismealdi.meepopup.util.component.AmTextView
+                        android:layout_marginStart="@dimen/component_small"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:enabled="false"
+                        android:id="@+id/buttonResend"
+                        app:am_font_style="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@drawable/button_text_secondary"
+                        android:text="60"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
