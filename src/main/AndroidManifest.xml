@@ -12,21 +12,21 @@
     </dist:module>
 
     <application>
-        <activity android:name=".signin.SignInActivity"
+        <activity android:name="com.ismealdi.auth.ui.signin.SignInActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup.SignUpActivity"
+        <activity android:name="com.ismealdi.auth.ui.signup.SignUpActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".otp.OtpVerificationActivity"
+        <activity android:name="com.ismealdi.auth.ui.otp.OtpVerificationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>

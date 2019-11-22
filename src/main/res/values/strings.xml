@@ -21,4 +21,7 @@
     <string name="text_kirim_ulang">Kirim Ulang</string>
     <string name="text_kirim_ulang_count">Kirim Ulang (%s)</string>
     <string name="title_otp">Verifikasi</string>
+    <string name="text_country_code">+62</string>
+    <string name="text_phone_number_terms">Tanpa 0 pertama, contoh 08777xxx menjadi 8777xxx</string>
+    <string name="text_ganti_nomor">Ganti Nomor Telepon</string>
 </resources>

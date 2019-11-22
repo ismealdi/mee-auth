@@ -93,17 +93,53 @@
                     android:textColor="@color/colorTextAccent"
                     android:text="@string/text_masuk_untuk_melanjutkan"/>
 
-                <com.ismealdi.meepopup.util.component.AmEditText
-                    android:background="@drawable/input_primary"
-                    android:layout_marginTop="@dimen/component_big"
-                    android:layout_marginBottom="@dimen/component_super"
-                    android:id="@+id/inputPhone"
-                    style="@style/AppTheme.EditText.Primary"
-                    android:lines="1"
-                    android:hint="@string/text_phone_hint"
-                    android:inputType="phone"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/component_big">
+
+                    <com.ismealdi.meepopup.util.component.AmTextView
+                        android:id="@+id/labelCountryCode"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:am_font_style="medium"
+                        android:layout_width="wrap_content"
+                        android:paddingStart="@dimen/component_medium"
+                        android:paddingEnd="@dimen/component_medium"
+                        android:layout_height="0dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:background="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_small"
+                        android:textColor="@color/colorTextLight"
+                        android:text="@string/text_country_code"/>
+
+                    <com.ismealdi.meepopup.util.component.AmEditText
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/labelCountryCode"
+                        android:background="@drawable/input_primary"
+                        android:id="@+id/inputPhone"
+                        style="@style/AppTheme.EditText.Primary"
+                        android:lines="1"
+                        android:hint="@string/text_phone_hint"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:digits="1234567890"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.ismealdi.meepopup.util.component.AmTextView
+                    android:layout_marginTop="@dimen/component_small"
+                    android:layout_marginBottom="@dimen/component_super"
+                    app:am_font_style="regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_tiny"
+                    android:textColor="@color/colorTextSecondary"
+                    android:text="@string/text_phone_number_terms"/>
 
                 <com.ismealdi.meepopup.util.component.AmButton
                     app:am_font_style="bold"
