@@ -12,6 +12,7 @@ import com.ismealdi.auth.R
 import com.ismealdi.auth.databinding.ViewOtpVerificationBinding
 import com.ismealdi.meepopup.base.AmActivity
 import com.ismealdi.meepopup.base.AmApplication
+import com.ismealdi.meepopup.base.user
 import com.ismealdi.meepopup.schema.User
 import com.ismealdi.meepopup.util.common.Constants
 import com.ismealdi.meepopup.util.common.Logs
@@ -44,6 +45,8 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
         intent?.let { data ->
             data.getSerializableExtra(Constants.INTENT.DATA.SIGN_UP.user)?.let { userData ->
                 user = userData as User
+                dialogLoader(true)
+
                 AmApplication.amPhone.verifyPhoneNumber("+62${user?.phone}", 60, TimeUnit.SECONDS, this, callbacks)
 
                 setTimer()
@@ -116,14 +119,49 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        AmApplication.amAuth.currentUser?.linkWithCredential(credential)?.addOnCompleteListener(this) { task ->
-            dialogLoader(false)
+        if(AmApplication.amAuth.currentUser == null) {
+            AmApplication.amAuth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
+                dialogLoader(false)
 
-            if (task.isSuccessful) {
-                finishAffinity()
-            }else{
-                message("failed")
+                if (task.isSuccessful) {
+                    user?.let { successSignIn(it) }
+                } else {
+                    // Sign in failed, display a message and update the UI
+                    Logs.e("signInWithCredential:failure ${task.exception}")
+
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                        message("OTP yang di masukan tidak sesuai.")
+                        inputPhone.setText("")
+                    }
+                }
             }
+
+            return
+        }
+
+        AmApplication.amAuth.currentUser?.linkWithCredential(credential)?.addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                task.result?.user?.let { data ->
+                    user?.let {
+                        it.uid = data.uid
+
+                        storeUser(it)
+                    }
+                }
+            }else{
+                dialogLoader(false)
+                message("Gagal, ${task.exception}")
+            }
+        }
+    }
+
+    private fun storeUser(user: User) {
+        AmApplication.amDatabase.user(user.uid).set(user).addOnCompleteListener {
+            dialogLoader(false)
+        }.addOnSuccessListener {
+            successSignIn(user)
+        }.addOnFailureListener {
+            message(it.message ?: "")
         }
     }
 
@@ -153,13 +191,13 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
             verificationToken = token
 
             Logs.e( "onCodeSent:$verificationId")
-            message("Success, $token and $verificationId")
+            message(getString(R.string.text_otp_send))
         }
     }
 
     private fun resendVerificationCode(phoneNumber: String, token: PhoneAuthProvider.ForceResendingToken?) {
         dialogLoader(true)
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, this, callbacks, token)
+        AmApplication.amPhone.verifyPhoneNumber(phoneNumber, 60, TimeUnit.SECONDS, this, callbacks, token)
     }
 
 }
