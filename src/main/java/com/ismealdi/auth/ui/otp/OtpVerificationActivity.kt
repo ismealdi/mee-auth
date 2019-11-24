@@ -16,7 +16,6 @@ import com.ismealdi.meepopup.base.user
 import com.ismealdi.meepopup.schema.User
 import com.ismealdi.meepopup.util.common.Constants
 import com.ismealdi.meepopup.util.common.Logs
-import com.ismealdi.meepopup.util.common.getRandomNumberString
 import kotlinx.android.synthetic.main.view_otp_verification.*
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -57,7 +56,7 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
     override fun listener() {
         super.listener()
 
-        binding.inputPhone.addTextChangedListener {
+        inputPhone.addTextChangedListener {
             if(it?.length == 6) {
                 dialogLoader(true)
                 val credential = PhoneAuthProvider.getCredential(verificationId, it.toString())
@@ -65,8 +64,8 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
             }
         }
 
-        binding.buttonResend.setOnClickListener {
-            if(binding.buttonResend.text == getString(R.string.text_ganti_nomor)) {
+        buttonResend.setOnClickListener {
+            if(buttonResend.text == getString(R.string.text_ganti_nomor)) {
                 intent.putExtra(Constants.INTENT.DATA.SIGN_UP.changePhone, true)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
@@ -79,7 +78,7 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
                 inputPhone.setText("")
 
                 if(resend == 1) {
-                    binding.buttonResend.text = getString(R.string.text_ganti_nomor)
+                    buttonResend.text = getString(R.string.text_ganti_nomor)
                     resend = 0
                 }else{
                     resendTimer.cancel()
@@ -100,17 +99,17 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
     private fun setTimer() {
         var count = 60
 
-        binding.buttonResend.isEnabled = false
+        buttonResend.isEnabled = false
 
         resendTimer.scheduleAtFixedRate(timerTask {
             runOnUiThread {
                 count--
 
-                binding.buttonResend.text = getString(R.string.text_kirim_ulang_count, count.toString())
+                buttonResend.text = getString(R.string.text_kirim_ulang_count, count.toString())
 
                 if(count == 0) {
-                    binding.buttonResend.isEnabled = true
-                    binding.buttonResend.text = getString(R.string.text_kirim_ulang)
+                    buttonResend.isEnabled = true
+                    buttonResend.text = getString(R.string.text_kirim_ulang)
                     resendTimer.cancel()
                 }
             }
@@ -168,7 +167,7 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             Logs.i("onVerificationCompleted:$credential")
-            inputPhone.setText(credential.smsCode ?: getRandomNumberString())
+            //inputPhone.setText(credential.smsCode ?: getRandomNumberString())
             signInWithPhoneAuthCredential(credential)
         }
 

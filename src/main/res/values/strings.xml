@@ -25,6 +25,6 @@
     <string name="text_phone_number_terms">Tanpa 0 pertama, contoh 08777xxx menjadi 8777xxx</string>
     <string name="text_error_login">Masukan nomor ponsel yang terdaftar!</string>
     <string name="text_user_not_found">Data dengan nomor ponsel tersebut tidak ditemukan</string>
-    <string name="text_otp_send">Kode OTP berhasil dikirim, silahkan cek kotam masuk anda</string>
+    <string name="text_otp_send">Kode OTP berhasil dikirim, silahkan cek kotak masuk anda</string>
     <string name="text_ganti_nomor">Ganti Nomor Telepon</string>
 </resources>
