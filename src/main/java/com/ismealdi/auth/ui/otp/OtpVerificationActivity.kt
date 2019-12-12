@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.ismealdi.auth.R
-import com.ismealdi.auth.databinding.ViewOtpVerificationBinding
 import com.ismealdi.meepopup.base.AmActivity
 import com.ismealdi.meepopup.base.AmApplication
 import com.ismealdi.meepopup.base.user
@@ -22,7 +21,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timerTask
 
 
-class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.view_otp_verification) {
+class OtpVerificationActivity : AmActivity(R.layout.view_otp_verification) {
 
     private var resendTimer = Timer()
     private var verificationId = ""
@@ -34,7 +33,6 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
         pageBack(true)
         pageTitle(getString(R.string.title_otp))
 
-        handleIntent()
         setTimer()
     }
 
@@ -58,9 +56,16 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
 
         inputPhone.addTextChangedListener {
             if(it?.length == 6) {
-                dialogLoader(true)
-                val credential = PhoneAuthProvider.getCredential(verificationId, it.toString())
-                signInWithPhoneAuthCredential(credential)
+                if(verificationId.isEmpty()) {
+                    inputPhone.setText("")
+                    message("Ada kesalahan dengan server kami, tolong masuk ulang")
+                    return@addTextChangedListener
+                }
+
+                PhoneAuthProvider.getCredential(verificationId, it.toString())?.let { credential ->
+                    dialogLoader(true)
+                    signInWithPhoneAuthCredential(credential)
+                }
             }
         }
 
@@ -128,6 +133,8 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
                     // Sign in failed, display a message and update the UI
                     Logs.e("signInWithCredential:failure ${task.exception}")
 
+                    message("Gagal, ${task.exception}")
+
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         message("OTP yang di masukan tidak sesuai.")
                         inputPhone.setText("")
@@ -175,6 +182,8 @@ class OtpVerificationActivity : AmActivity<ViewOtpVerificationBinding>(R.layout.
             dialogLoader(false)
 
             Logs.e("onVerificationFailed $e")
+
+            message("Gagal, ${e.localizedMessage}")
 
             if (e is FirebaseAuthInvalidCredentialsException) {
                 Logs.e("Invalid request")

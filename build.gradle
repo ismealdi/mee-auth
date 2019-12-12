@@ -5,18 +5,19 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-allopen'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion versions.compileSdk
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.codeVersion
+        versionName versions.versionName
 
     }
 
-    dataBinding {
-        enabled = true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }

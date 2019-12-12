@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import com.ismealdi.auth.R
-import com.ismealdi.auth.databinding.ViewSignInBinding
 import com.ismealdi.auth.ui.otp.OtpVerificationActivity
 import com.ismealdi.auth.ui.signup.SignUpActivity
 import com.ismealdi.meepopup.base.AmActivity
@@ -14,7 +13,7 @@ import com.ismealdi.meepopup.schema.User
 import com.ismealdi.meepopup.util.common.Constants
 import kotlinx.android.synthetic.main.view_sign_in.*
 
-class SignInActivity : AmActivity<ViewSignInBinding>(R.layout.view_sign_in) {
+class SignInActivity : AmActivity(R.layout.view_sign_in) {
 
     override fun initView(savedInstanceState: Bundle?) {
 

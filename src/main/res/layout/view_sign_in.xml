@@ -1,197 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutParent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundPrimary">
 
-    <data/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutParent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackgroundPrimary">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:layout_marginTop="@dimen/component_huge"
-            android:layout_marginBottom="@dimen/component_bottom_big"
-            app:layout_constraintBottom_toTopOf="@id/layoutBottomRegister">
-
-            <LinearLayout
-                style="@style/AppTheme.Layout.Parent"
-                android:layout_gravity="bottom"
-                android:id="@+id/layoutForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.ismealdi.meepopup.util.component.AmTextView
-                    app:am_font_style="regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_big"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textAllCaps="true"
-                    android:text="@string/text_hanya_pilih"/>
-
-                <com.ismealdi.meepopup.util.component.AmTextView
-                    android:layout_marginTop="@dimen/component_small"
-                    app:am_font_style="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_medium"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textAllCaps="true"
-                    android:text="@string/text_kebutuhan_pencintan_mie"/>
-
-                <com.ismealdi.meepopup.util.component.AmTextView
-                    android:layout_marginTop="@dimen/component_super"
-                    app:am_font_style="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_normal"
-                    android:textColor="@color/colorTextAccent"
-                    android:text="@string/text_masuk_untuk_melanjutkan"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/component_big">
-
-                    <com.ismealdi.meepopup.util.component.AmTextView
-                        android:id="@+id/labelCountryCode"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:am_font_style="medium"
-                        android:layout_width="wrap_content"
-                        android:paddingStart="@dimen/component_medium"
-                        android:paddingEnd="@dimen/component_medium"
-                        android:layout_height="0dp"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:background="@color/colorPrimaryDark"
-                        android:textSize="@dimen/text_small"
-                        android:textColor="@color/colorTextLight"
-                        android:text="@string/text_country_code"/>
-
-                    <com.ismealdi.meepopup.util.component.AmEditText
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/labelCountryCode"
-                        android:background="@drawable/input_primary"
-                        android:id="@+id/inputPhone"
-                        style="@style/AppTheme.EditText.Primary"
-                        android:lines="1"
-                        android:hint="@string/text_phone_hint"
-                        android:imeOptions="actionDone"
-                        android:inputType="phone"
-                        android:digits="1234567890"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <com.ismealdi.meepopup.util.component.AmTextView
-                    android:layout_marginTop="@dimen/component_small"
-                    android:layout_marginBottom="@dimen/component_super"
-                    app:am_font_style="regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_tiny"
-                    android:textColor="@color/colorTextSecondary"
-                    android:text="@string/text_phone_number_terms"/>
-
-                <com.ismealdi.meepopup.util.component.AmButton
-                    app:am_font_style="bold"
-                    android:id="@+id/buttonSignIn"
-                    style="@style/AppTheme.Button"
-                    android:textSize="@dimen/text_small"
-                    android:paddingStart="@dimen/component_extra_big"
-                    android:paddingEnd="@dimen/component_extra_big"
-                    android:background="@drawable/button_primary_round"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/input_height_big"
-                    android:text="@string/text_masuk"/>
-
-            </LinearLayout>
-
-        </ScrollView>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTransparent"
-            app:elevation="0dp"
-            android:elevation="0dp"
-            tools:targetApi="lollipop">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorBackgroundPrimary"
-                android:gravity="center"
-                app:popupTheme="@style/AppTheme">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageLogo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_logo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:layout_marginTop="@dimen/component_huge"
+        android:layout_marginBottom="@dimen/component_bottom_big"
+        app:layout_constraintBottom_toTopOf="@id/layoutBottomRegister">
 
         <LinearLayout
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/layoutBottomRegister"
-            android:layout_width="wrap_content"
+            style="@style/AppTheme.Layout.Parent"
+            android:layout_gravity="bottom"
+            android:id="@+id/layoutForm"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <com.ismealdi.meepopup.util.component.AmTextView
                 app:am_font_style="regular"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:textSize="@dimen/text_small"
+                android:textSize="@dimen/text_big"
                 android:textColor="@color/colorTextPrimary"
-                android:text="@string/text_belum_punya_akun"/>
+                android:textAllCaps="true"
+                android:text="@string/text_hanya_pilih"/>
 
             <com.ismealdi.meepopup.util.component.AmTextView
-                android:layout_marginStart="@dimen/component_small"
-                android:clickable="true"
-                android:focusable="true"
-                android:id="@+id/buttonSignUp"
+                android:layout_marginTop="@dimen/component_small"
                 app:am_font_style="bold"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/colorTextPrimary"
+                android:textAllCaps="true"
+                android:text="@string/text_kebutuhan_pencintan_mie"/>
+
+            <com.ismealdi.meepopup.util.component.AmTextView
+                android:layout_marginTop="@dimen/component_super"
+                app:am_font_style="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/colorTextAccent"
+                android:text="@string/text_masuk_untuk_melanjutkan"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_big">
+
+                <com.ismealdi.meepopup.util.component.AmTextView
+                    android:id="@+id/labelCountryCode"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:am_font_style="medium"
+                    android:layout_width="wrap_content"
+                    android:paddingStart="@dimen/component_medium"
+                    android:paddingEnd="@dimen/component_medium"
+                    android:layout_height="0dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:background="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/colorTextLight"
+                    android:text="@string/text_country_code"/>
+
+                <com.ismealdi.meepopup.util.component.AmEditText
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/labelCountryCode"
+                    android:background="@drawable/input_primary"
+                    android:id="@+id/inputPhone"
+                    style="@style/AppTheme.EditText.Primary"
+                    android:lines="1"
+                    android:hint="@string/text_phone_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:digits="1234567890"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.ismealdi.meepopup.util.component.AmTextView
+                android:layout_marginTop="@dimen/component_small"
+                android:layout_marginBottom="@dimen/component_super"
+                app:am_font_style="regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_tiny"
+                android:textColor="@color/colorTextSecondary"
+                android:text="@string/text_phone_number_terms"/>
+
+            <com.ismealdi.meepopup.util.component.AmButton
+                app:am_font_style="bold"
+                android:id="@+id/buttonSignIn"
+                style="@style/AppTheme.Button"
                 android:textSize="@dimen/text_small"
-                android:textColor="@drawable/button_text_secondary"
-                android:text="@string/text_daftar"/>
+                android:paddingStart="@dimen/component_extra_big"
+                android:paddingEnd="@dimen/component_extra_big"
+                android:background="@drawable/button_primary_round"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height_big"
+                android:text="@string/text_masuk"/>
+
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    </ScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTransparent"
+        app:elevation="0dp"
+        android:elevation="0dp"
+        tools:targetApi="lollipop">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackgroundPrimary"
+            android:gravity="center"
+            app:popupTheme="@style/AppTheme">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/layoutBottomRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <com.ismealdi.meepopup.util.component.AmTextView
+            app:am_font_style="regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/colorTextPrimary"
+            android:text="@string/text_belum_punya_akun"/>
+
+        <com.ismealdi.meepopup.util.component.AmTextView
+            android:layout_marginStart="@dimen/component_small"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/buttonSignUp"
+            app:am_font_style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/input_height"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="@dimen/text_small"
+            android:textColor="@drawable/button_text_secondary"
+            android:text="@string/text_daftar"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

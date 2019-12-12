@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import com.ismealdi.auth.R
-import com.ismealdi.auth.databinding.ViewSignUpBinding
 import com.ismealdi.auth.ui.otp.OtpVerificationActivity
 import com.ismealdi.meepopup.base.AmActivity
 import com.ismealdi.meepopup.base.AmApplication
@@ -15,7 +14,7 @@ import com.ismealdi.meepopup.util.common.Constants.INTENT.DATA.SIGN_UP.changePho
 import com.ismealdi.meepopup.util.common.Constants.INTENT.REQUEST.SIGN_UP_PHONE_VERIFICATION
 import kotlinx.android.synthetic.main.view_sign_up.*
 
-class SignUpActivity : AmActivity<ViewSignUpBinding>(R.layout.view_sign_up) {
+class SignUpActivity : AmActivity(R.layout.view_sign_up) {
 
     private var isChangePhone = false
     private var currentPhone = ""
@@ -60,7 +59,6 @@ class SignUpActivity : AmActivity<ViewSignUpBinding>(R.layout.view_sign_up) {
     private fun signUp() {
         val email = inputEmail.text.toString()
         val password = inputPassword.text.toString()
-        val name = inputName.text.toString()
 
         dialogLoader(true)
 
